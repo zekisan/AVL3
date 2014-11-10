@@ -28,6 +28,7 @@ public class Principal {
 					System.out.println("Digite os dados separados por ;");
 					String linha = ler2.nextLine(); 
 					String[] p = linha.split(";");
+					avl.setInsercaoIndividual(true);
 					avl.insere(ControladorPessoa.cadastraPessoa(p));
 					break;
 				case 3:
