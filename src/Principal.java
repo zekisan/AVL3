@@ -13,7 +13,6 @@ public class Principal {
 			System.out.println("2 - Inserir novo registro");
 			System.out.println("3 - Sair");
 			System.out.println("-----------------------------------------------");
-			System.out.println("\n");
 			try {
 				op = ler.nextInt();
 				switch (op) {
@@ -23,11 +22,11 @@ public class Principal {
 					System.out.println("Rotacoes a esquerda: "+avl.getContRotEsquerda());
 					System.out.println("Total de rotacoes: "+avl.totalRotacoes());
 					System.out.println("-----------------------------------------------");
-					System.out.println("\n");
 					break;
 				case 2:
-					//System.out.println("Digite os dados separados por ;");
-					String linha = System.console().readLine("Digite os dados separados por ;");
+					Scanner ler2 = new Scanner(System.in);
+					System.out.println("Digite os dados separados por ;");
+					String linha = ler2.nextLine(); 
 					String[] p = linha.split(";");
 					avl.insere(ControladorPessoa.cadastraPessoa(p));
 					break;
