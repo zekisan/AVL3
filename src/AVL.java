@@ -2,20 +2,22 @@
 public class AVL {
 
 	private Nodo raiz;
-	private int contRotDireita, contRotEsquerda;
+	private int contRotDireita, contRotEsquerda, contRotDupla, indiceAtributo, totalElementos;
 	private boolean insercaoIndividual;
 	
 	public AVL(){
-		contRotDireita = contRotEsquerda = 0;
+		contRotDireita = contRotEsquerda = contRotDupla = totalElementos = 0;
 		insercaoIndividual = false;
 	}
 	
 	public void insere(Pessoa pessoa){
-		Nodo novo = new Nodo(pessoa);
-		if(raiz == null){
-			raiz = novo;
-		}else{
-			raiz = insereAVL(raiz, novo);
+		if(pessoa.atributoEscolhido(indiceAtributo) != null){
+			Nodo novo = new Nodo(pessoa);
+			if(raiz == null){
+				raiz = novo;
+			}else{
+				raiz = insereAVL(raiz, novo);
+			}
 		}
 	}
 	
@@ -24,11 +26,11 @@ public class AVL {
 			atual = n;
 			return atual;
 		//}else if(n.getValor() < atual.getValor()){
-		}else if(n.getPessoa().getLogradouro().compareTo(atual.getPessoa().getLogradouro()) < 0){
+		}else if(n.getPessoa().atributoEscolhido(indiceAtributo).compareTo(atual.getPessoa().atributoEscolhido(indiceAtributo)) < 0){
 			atual.setEsquerda(insereAVL(atual.getEsquerda(),n));
 			atual = balanceamento(atual);
 		//}else if(n.getValor() > atual.getValor()){
-		}else if(n.getPessoa().getLogradouro().compareTo(atual.getPessoa().getLogradouro()) > 0){
+		}else if(n.getPessoa().atributoEscolhido(indiceAtributo).compareTo(atual.getPessoa().atributoEscolhido(indiceAtributo)) > 0){
 			atual.setDireita(insereAVL(atual.getDireita(), n));
 			atual = balanceamento(atual);
 		}
@@ -83,12 +85,14 @@ public class AVL {
 	private Nodo rotacionaED(Nodo pai){
 		Nodo temp = pai.getEsquerda();
 		pai.setEsquerda(rotacionaDD(temp));
+		contRotDupla++;
 		return rotacionaEE(pai);
 	}
 	
 	private Nodo rotacionaDE(Nodo pai){
 		Nodo temp = pai.getDireita();
 		pai.setDireita(rotacionaEE(temp));
+		contRotDupla++;
 		return rotacionaDD(pai);
 	}
 
@@ -108,6 +112,22 @@ public class AVL {
 		return contRotEsquerda;
 	}
 	
+	public void setContRotDireita(int contRotDireita) {
+		this.contRotDireita = contRotDireita;
+	}
+
+	public void setContRotEsquerda(int contRotEsquerda) {
+		this.contRotEsquerda = contRotEsquerda;
+	}
+
+	public int getContRotDupla() {
+		return contRotDupla;
+	}
+
+	public void setContRotDupla(int contRotDupla) {
+		this.contRotDupla = contRotDupla;
+	}
+
 	public boolean isInsercaoIndividual() {
 		return insercaoIndividual;
 	}
@@ -117,6 +137,22 @@ public class AVL {
 	}
 
 	public int totalRotacoes(){
-		return contRotDireita + contRotEsquerda;
+		return contRotDireita + contRotEsquerda + contRotDupla;
+	}
+
+	public int getIndiceAtributo() {
+		return indiceAtributo;
+	}
+
+	public void setIndiceAtributo(int indiceAtributo) {
+		this.indiceAtributo = indiceAtributo;
+	}
+	
+	public void somaElemento(){
+		totalElementos++;
+	}
+	
+	public int getTotalElementos(){
+		return totalElementos;
 	}
 }

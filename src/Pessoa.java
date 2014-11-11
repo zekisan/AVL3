@@ -1,13 +1,6 @@
 public class Pessoa {
 
-	private int ID;
-	private String nome;
-	private long cpf;
-	private String logradouro;
-	private int numero;
-	private String complemento;
-	private long telResidencial;
-	private long telCelular;
+	private String ID, nome, cpf, logradouro, numero, complemento, telResidencial, telCelular;
 
 	public Pessoa() {
 		//int id, String nome, int cpf, String logradouro, int numero,
@@ -22,7 +15,7 @@ public class Pessoa {
 		this.telCelular = telCelular;*/
 	}
 
-	public int getID() {
+	public String getID() {
 		return ID;
 	}
 
@@ -30,7 +23,7 @@ public class Pessoa {
 		return nome;
 	}
 
-	public long getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
@@ -38,7 +31,7 @@ public class Pessoa {
 		return logradouro;
 	}
 
-	public int getNumero() {
+	public String getNumero() {
 		return numero;
 	}
 
@@ -46,15 +39,15 @@ public class Pessoa {
 		return complemento;
 	}
 
-	public long getTelResidencial() {
+	public String getTelResidencial() {
 		return telResidencial;
 	}
 
-	public long getTelCelular() {
+	public String getTelCelular() {
 		return telCelular;
 	}
 
-	public void setID(int iD) {
+	public void setID(String iD) {
 		ID = iD;
 	}
 
@@ -62,7 +55,7 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public void setCpf(long cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
@@ -70,7 +63,7 @@ public class Pessoa {
 		this.logradouro = logradouro;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(String numero) {
 		this.numero = numero;
 	}
 
@@ -78,11 +71,34 @@ public class Pessoa {
 		this.complemento = complemento;
 	}
 
-	public void setTelResidencial(long telResidencial) {
+	public void setTelResidencial(String telResidencial) {
 		this.telResidencial = telResidencial;
 	}
 
-	public void setTelCelular(long telCelular) {
+	public void setTelCelular(String telCelular) {
 		this.telCelular = telCelular;
+	}
+	
+	public String atributoEscolhido(int indice){
+		switch (indice) {
+		case 0:
+			return getID();
+		case 1:
+			return getNome();
+		case 2:
+			return getCpf();
+		case 3:
+			return getLogradouro();
+		case 4:
+			return getNumero();
+		case 5:
+			return getComplemento();
+		case 6:
+			return getTelResidencial();
+		case 7:
+			return getTelCelular();
+		default:
+			return null;
+		}
 	}
 }

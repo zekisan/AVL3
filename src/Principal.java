@@ -8,28 +8,17 @@ public class Principal {
 		AVL avl = new AVL();
 		int op = 0;
 		while (op != 3) {
-			System.out.println("Digite o numero da opcao desejada:");
-			System.out.println("1 - Inserir dados na AVL");
-			System.out.println("2 - Inserir novo registro");
-			System.out.println("3 - Sair");
-			System.out.println("-----------------------------------------------");
+			menuPrincipal();
 			try {
 				op = ler.nextInt();
 				switch (op) {
 				case 1:
-					ControladorArquivo.leArquivo(avl);
-					System.out.println("Rotacoes a direita: "+avl.getContRotDireita());
-					System.out.println("Rotacoes a esquerda: "+avl.getContRotEsquerda());
-					System.out.println("Total de rotacoes: "+avl.totalRotacoes());
-					System.out.println("-----------------------------------------------");
+					insereDadosArquivo(avl);
+					qtdRotacoes(avl);
 					break;
 				case 2:
-					Scanner ler2 = new Scanner(System.in);
-					System.out.println("Digite os dados separados por ;");
-					String linha = ler2.nextLine(); 
-					String[] p = linha.split(";");
-					avl.setInsercaoIndividual(true);
-					avl.insere(ControladorPessoa.cadastraPessoa(p));
+					insercaoIndividual(avl);
+					qtdRotacoes(avl);
 					break;
 				case 3:
 					System.exit(0);
@@ -42,15 +31,53 @@ public class Principal {
 				op = 0;
 			}
 		}
-
-		// int[] valores = {1,2,3,4,5,6,7,9,8};
-		// AVL avl = new AVL();
-		// AVL2 avl = new AVL2();
-		// for (int i = 0; i < valores.length; i++) {
-		// avl.inserePessoa(valores[i]);
-		// avl.insere(valores[i]);
-		// }
-		System.out.println(avl.getAltura(avl.getRaiz()));
 	}
 
+	private static void qtdRotacoes(AVL avl) {
+		System.out.println("Rotacoes a direita: "+avl.getContRotDireita());
+		System.out.println("Rotacoes a esquerda: "+avl.getContRotEsquerda());
+		System.out.println("Rotacoes duplas: "+avl.getContRotDupla());
+		System.out.println("Total de rotacoes: "+avl.totalRotacoes());
+		System.out.println("-----------------------------------------------");
+	}
+
+	private static void insereDadosArquivo(AVL avl) {
+		ControladorArquivo.leArquivo(avl,escolheAtributo());
+	}
+
+	private static void menuPrincipal() {
+		System.out.println("Digite o numero da opcao desejada:");
+		System.out.println("1 - Inserir dados na AVL");
+		System.out.println("2 - Inserir novo registro");
+		System.out.println("3 - Sair");
+		System.out.println("-----------------------------------------------");
+	}
+
+	private static void insercaoIndividual(AVL avl) {
+		Scanner ler2 = new Scanner(System.in);
+		System.out.println("Digite os dados separados por ; (não digite o ID!!)");
+		String linha = ler2.nextLine(); 
+		String[] p = ("0;"+linha).split(";");
+		avl.setInsercaoIndividual(true);
+		avl.setContRotDireita(0);
+		avl.setContRotEsquerda(0);
+		avl.setIndiceAtributo(escolheAtributo());
+		avl.insere(ControladorPessoa.cadastraPessoa(p,avl.isInsercaoIndividual(),avl.getTotalElementos()+1));
+		avl.somaElemento();
+	}
+
+	private static int escolheAtributo(){
+		System.out.println("Escolha o atributo chave:");
+		System.out.println("0 - id");
+		System.out.println("1 - nome");
+		System.out.println("2 - cpf");
+		System.out.println("3 - logradouro");
+		System.out.println("4 - numero");
+		System.out.println("5 - complemento");
+		System.out.println("6 - telefone residencial");
+		System.out.println("7 - telefone celular");
+		
+		Scanner ler = new Scanner(System.in);
+		return ler.nextInt();
+	}
 }
