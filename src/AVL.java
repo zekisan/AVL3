@@ -25,11 +25,9 @@ public class AVL {
 		if(atual == null){
 			atual = n;
 			return atual;
-		//}else if(n.getValor() < atual.getValor()){
 		}else if(n.getPessoa().atributoEscolhido(indiceAtributo).compareTo(atual.getPessoa().atributoEscolhido(indiceAtributo)) < 0){
 			atual.setEsquerda(insereAVL(atual.getEsquerda(),n));
 			atual = balanceamento(atual);
-		//}else if(n.getValor() > atual.getValor()){
 		}else if(n.getPessoa().atributoEscolhido(indiceAtributo).compareTo(atual.getPessoa().atributoEscolhido(indiceAtributo)) > 0){
 			atual.setDireita(insereAVL(atual.getDireita(), n));
 			atual = balanceamento(atual);
@@ -39,14 +37,14 @@ public class AVL {
 	
 	private Nodo balanceamento(Nodo atual){
 		int fb = calculaFB(atual);
-		if(fb > 1){
-			if(calculaFB(atual.getEsquerda()) > 0){
+		if(fb == 2){
+			if(calculaFB(atual.getEsquerda()) == 1){
 				atual = rotacionaEE(atual);
 			}else{
 				atual = rotacionaED(atual);
 			}
-		}else if(fb < -1){
-			if(calculaFB(atual.getDireita()) > 0){
+		}else if(fb == -2){
+			if(calculaFB(atual.getDireita()) == 1){
 				atual = rotacionaDE(atual);
 			}else{
 				atual = rotacionaDD(atual);
@@ -94,6 +92,22 @@ public class AVL {
 		pai.setDireita(rotacionaEE(temp));
 		contRotDupla++;
 		return rotacionaDD(pai);
+	}
+	
+	public Nodo pesquisaNodo(Nodo atual, String valor){
+		Nodo resultado = null;
+		if(atual == null){
+			//resultado = null;
+			return null;
+		}else if(atual.getPessoa().atributoEscolhido(indiceAtributo) == valor){
+			resultado = atual;
+			return atual;
+		}else if(valor.compareTo(atual.getPessoa().atributoEscolhido(indiceAtributo)) < 0){
+			pesquisaNodo(atual.getEsquerda(),valor);
+		}else if(valor.compareTo(atual.getPessoa().atributoEscolhido(indiceAtributo)) > 0){
+			pesquisaNodo(atual.getDireita(), valor);
+		}
+		return resultado;
 	}
 
 	public Nodo getRaiz() {

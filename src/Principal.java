@@ -4,12 +4,12 @@ import java.util.Scanner;
 public class Principal {
 
 	public static void main(String[] args) {
-		Scanner ler = new Scanner(System.in);
 		AVL avl = new AVL();
 		int op = 0;
 		while (op != 3) {
 			menuPrincipal();
 			try {
+				Scanner ler = new Scanner(System.in);
 				op = ler.nextInt();
 				switch (op) {
 				case 1:
@@ -21,15 +21,34 @@ public class Principal {
 					qtdRotacoes(avl);
 					break;
 				case 3:
+					pesquisaPessoa(avl);
+					break;
+				case 4:
 					System.exit(0);
 				default:
-					System.out.println("Opcao invalida!");
+					System.out.println("Opcao invalida!\n");
 					break;
 				}
 			} catch (InputMismatchException e) {
-				System.out.println("Opcao invalida!");
-				op = 0;
+				System.out.println("Opcao invalida!\n");
+				
 			}
+		}
+	}
+
+	private static void pesquisaPessoa(AVL avl) {
+		System.out.println("Digite o valor a ser pesquisado:");
+		Scanner ler = new Scanner(System.in);
+		String valor = ler.nextLine();
+		avl.setIndiceAtributo(escolheAtributo());
+		Nodo resultado = avl.pesquisaNodo(avl.getRaiz(),valor);
+		if(resultado == null){
+			System.out.println("Não foi possível localizar o valor informado!");
+		}else{
+			System.out.println("Registro localizado:");
+			System.out.println(resultado.getPessoa().atributoEscolhido(avl.getIndiceAtributo()));
+			System.out.println("Altura do nodo: "+avl.getAltura(resultado));
+			System.out.println("FB: "+avl.calculaFB(resultado)+"\n");
 		}
 	}
 
@@ -38,7 +57,7 @@ public class Principal {
 		System.out.println("Rotacoes a esquerda: "+avl.getContRotEsquerda());
 		System.out.println("Rotacoes duplas: "+avl.getContRotDupla());
 		System.out.println("Total de rotacoes: "+avl.totalRotacoes());
-		System.out.println("-----------------------------------------------");
+		System.out.println("-----------------------------------------------\n");
 	}
 
 	private static void insereDadosArquivo(AVL avl) {
@@ -49,7 +68,8 @@ public class Principal {
 		System.out.println("Digite o numero da opcao desejada:");
 		System.out.println("1 - Inserir dados na AVL");
 		System.out.println("2 - Inserir novo registro");
-		System.out.println("3 - Sair");
+		System.out.println("3 - Pesquisa pessoa");
+		System.out.println("4 - Sair");
 		System.out.println("-----------------------------------------------");
 	}
 
