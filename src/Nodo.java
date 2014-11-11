@@ -1,33 +1,21 @@
 
 public class Nodo {
 
-	private Nodo pai, esquerda, direita;
+	private Nodo esquerda, direita;
 	private Pessoa pessoa;
 	private int valor;
 	
 	public Nodo(Pessoa pessoa){
-		pai = esquerda = direita = null;
+		esquerda = direita = null;
 		this.pessoa = pessoa;
 	}
-	
-	/*public Nodo(int valor){
-		this.valor = valor;
-	}*/
-	
-	public Nodo getPai() {
-		return pai;
-	}
-	
+
 	public Nodo getEsquerda() {
 		return esquerda;
 	}
 	
 	public Nodo getDireita() {
 		return direita;
-	}
-	
-	public void setPai(Nodo pai) {
-		this.pai = pai;
 	}
 
 	public void setEsquerda(Nodo esquerda) {

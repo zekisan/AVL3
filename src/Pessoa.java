@@ -2,19 +2,6 @@ public class Pessoa {
 
 	private String ID, nome, cpf, logradouro, numero, complemento, telResidencial, telCelular;
 
-	public Pessoa() {
-		//int id, String nome, int cpf, String logradouro, int numero,
-		//int complemento, int telResidencial, int telCelular
-		/*this.ID = id;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.logradouro = logradouro;
-		this.numero = numero;
-		this.complemento = complemento;
-		this.telResidencial = telResidencial;
-		this.telCelular = telCelular;*/
-	}
-
 	public String getID() {
 		return ID;
 	}

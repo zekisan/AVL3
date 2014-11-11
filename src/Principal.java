@@ -21,9 +21,6 @@ public class Principal {
 					qtdRotacoes(avl);
 					break;
 				case 3:
-					pesquisaPessoa(avl);
-					break;
-				case 4:
 					System.exit(0);
 				default:
 					System.out.println("Opcao invalida!\n");
@@ -33,22 +30,6 @@ public class Principal {
 				System.out.println("Opcao invalida!\n");
 				
 			}
-		}
-	}
-
-	private static void pesquisaPessoa(AVL avl) {
-		System.out.println("Digite o valor a ser pesquisado:");
-		Scanner ler = new Scanner(System.in);
-		String valor = ler.nextLine();
-		avl.setIndiceAtributo(escolheAtributo());
-		Nodo resultado = avl.pesquisaNodo(avl.getRaiz(),valor);
-		if(resultado == null){
-			System.out.println("Não foi possível localizar o valor informado!");
-		}else{
-			System.out.println("Registro localizado:");
-			System.out.println(resultado.getPessoa().atributoEscolhido(avl.getIndiceAtributo()));
-			System.out.println("Altura do nodo: "+avl.getAltura(resultado));
-			System.out.println("FB: "+avl.calculaFB(resultado)+"\n");
 		}
 	}
 
@@ -62,6 +43,8 @@ public class Principal {
 
 	private static void insereDadosArquivo(AVL avl) {
 		ControladorArquivo.leArquivo(avl,escolheAtributo());
+		System.out.println("Altura: "+avl.getAltura(avl.getRaiz()));
+		System.out.println("Raiz: "+avl.getRaiz().getPessoa().getID());
 	}
 
 	private static void menuPrincipal() {

@@ -94,22 +94,6 @@ public class AVL {
 		return rotacionaDD(pai);
 	}
 	
-	public Nodo pesquisaNodo(Nodo atual, String valor){
-		Nodo resultado = null;
-		if(atual == null){
-			//resultado = null;
-			return null;
-		}else if(atual.getPessoa().atributoEscolhido(indiceAtributo) == valor){
-			resultado = atual;
-			return atual;
-		}else if(valor.compareTo(atual.getPessoa().atributoEscolhido(indiceAtributo)) < 0){
-			pesquisaNodo(atual.getEsquerda(),valor);
-		}else if(valor.compareTo(atual.getPessoa().atributoEscolhido(indiceAtributo)) > 0){
-			pesquisaNodo(atual.getDireita(), valor);
-		}
-		return resultado;
-	}
-
 	public Nodo getRaiz() {
 		return raiz;
 	}
