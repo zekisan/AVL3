@@ -165,4 +165,12 @@ public class AVL {
 	public int getTotalElementos(){
 		return totalElementos;
 	}
+	
+	public boolean estaVazia(){
+		return raiz == null;
+	}
+	
+	public void esvaziaContadores(){
+		contRotDireita = contRotEsquerda = contRotDupla = 0;
+	}
 }

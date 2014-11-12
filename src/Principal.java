@@ -42,6 +42,10 @@ public class Principal {
 	}
 
 	private static void insereDadosArquivo(AVL avl) {
+		if(!avl.estaVazia()){
+			avl.setRaiz(null);
+			avl.esvaziaContadores();
+		}
 		ControladorArquivo.leArquivo(avl,escolheAtributo());
 		System.out.println("Altura: "+avl.getAltura(avl.getRaiz()));
 		System.out.println("Raiz: "+avl.getRaiz().getPessoa().atributoEscolhido(avl.getIndiceAtributo()));
@@ -51,8 +55,7 @@ public class Principal {
 		System.out.println("Digite o numero da opcao desejada:");
 		System.out.println("1 - Inserir dados na AVL");
 		System.out.println("2 - Inserir novo registro");
-		System.out.println("3 - Pesquisa pessoa");
-		System.out.println("4 - Sair");
+		System.out.println("3 - Sair");
 		System.out.println("-----------------------------------------------");
 	}
 
@@ -62,8 +65,7 @@ public class Principal {
 		String linha = ler2.nextLine(); 
 		String[] p = ("0;"+linha).split(";");
 		avl.setInsercaoIndividual(true);
-		avl.setContRotDireita(0);
-		avl.setContRotEsquerda(0);
+		avl.esvaziaContadores();
 		avl.setIndiceAtributo(escolheAtributo());
 		avl.insere(ControladorPessoa.cadastraPessoa(p,avl.isInsercaoIndividual(),avl.getTotalElementos()+1));
 		avl.somaElemento();
