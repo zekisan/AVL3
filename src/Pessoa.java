@@ -1,8 +1,13 @@
 public class Pessoa {
 
-	private String ID, nome, cpf, logradouro, numero, complemento, telResidencial, telCelular;
+	private int ID;
+	private String nome;
+	private long cpf;
+	private String logradouro;
+	private int numero;
+	private String complemento, telResidencial, telCelular;
 
-	public String getID() {
+	public int getID() {
 		return ID;
 	}
 
@@ -10,7 +15,7 @@ public class Pessoa {
 		return nome;
 	}
 
-	public String getCpf() {
+	public long getCpf() {
 		return cpf;
 	}
 
@@ -18,7 +23,7 @@ public class Pessoa {
 		return logradouro;
 	}
 
-	public String getNumero() {
+	public int getNumero() {
 		return numero;
 	}
 
@@ -34,7 +39,7 @@ public class Pessoa {
 		return telCelular;
 	}
 
-	public void setID(String iD) {
+	public void setID(int iD) {
 		ID = iD;
 	}
 
@@ -42,7 +47,7 @@ public class Pessoa {
 		this.nome = nome;
 	}
 
-	public void setCpf(String cpf) {
+	public void setCpf(long cpf) {
 		this.cpf = cpf;
 	}
 
@@ -50,7 +55,7 @@ public class Pessoa {
 		this.logradouro = logradouro;
 	}
 
-	public void setNumero(String numero) {
+	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 
@@ -66,7 +71,7 @@ public class Pessoa {
 		this.telCelular = telCelular;
 	}
 	
-	public String atributoEscolhido(int indice){
+	public Object atributoEscolhido(int indice){
 		switch (indice) {
 		case 0:
 			return getID();

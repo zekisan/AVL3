@@ -25,12 +25,24 @@ public class AVL {
 		if(atual == null){
 			atual = n;
 			return atual;
-		}else if(n.getPessoa().atributoEscolhido(indiceAtributo).compareTo(atual.getPessoa().atributoEscolhido(indiceAtributo)) < 0){
-			atual.setEsquerda(insereAVL(atual.getEsquerda(),n));
-			atual = balanceamento(atual);
-		}else if(n.getPessoa().atributoEscolhido(indiceAtributo).compareTo(atual.getPessoa().atributoEscolhido(indiceAtributo)) > 0){
-			atual.setDireita(insereAVL(atual.getDireita(), n));
-			atual = balanceamento(atual);
+		}else{
+			if(n.getPessoa().atributoEscolhido(indiceAtributo).getClass().equals(String.class)){
+				if(((String)n.getPessoa().atributoEscolhido(indiceAtributo)).compareTo((String) atual.getPessoa().atributoEscolhido(indiceAtributo)) < 0){
+					atual.setEsquerda(insereAVL(atual.getEsquerda(),n));
+					atual = balanceamento(atual);
+				}else if(((String)n.getPessoa().atributoEscolhido(indiceAtributo)).compareTo((String) atual.getPessoa().atributoEscolhido(indiceAtributo)) > 0){
+					atual.setDireita(insereAVL(atual.getDireita(), n));
+					atual = balanceamento(atual);
+				}
+			}else{
+				if((Integer)n.getPessoa().atributoEscolhido(indiceAtributo) < (Integer)atual.getPessoa().atributoEscolhido(indiceAtributo)){
+					atual.setEsquerda(insereAVL(atual.getEsquerda(),n));
+					atual = balanceamento(atual);
+				}else if((Integer)n.getPessoa().atributoEscolhido(indiceAtributo) > (Integer)atual.getPessoa().atributoEscolhido(indiceAtributo)){
+					atual.setDireita(insereAVL(atual.getDireita(), n));
+					atual = balanceamento(atual);
+				}
+			}
 		}
 		return atual;
 	}

@@ -44,7 +44,7 @@ public class Principal {
 	private static void insereDadosArquivo(AVL avl) {
 		ControladorArquivo.leArquivo(avl,escolheAtributo());
 		System.out.println("Altura: "+avl.getAltura(avl.getRaiz()));
-		System.out.println("Raiz: "+avl.getRaiz().getPessoa().getID());
+		System.out.println("Raiz: "+avl.getRaiz().getPessoa().atributoEscolhido(avl.getIndiceAtributo()));
 	}
 
 	private static void menuPrincipal() {
