@@ -1,13 +1,11 @@
 public class Pessoa {
 
-	private int ID;
-	private String nome;
-	private long cpf;
+	private long ID, numero, cpf, telResidencial, telCelular;
+	private String nome; 
 	private String logradouro;
-	private int numero;
-	private String complemento, telResidencial, telCelular;
+	private String complemento;
 
-	public int getID() {
+	public long getID() {
 		return ID;
 	}
 
@@ -23,7 +21,7 @@ public class Pessoa {
 		return logradouro;
 	}
 
-	public int getNumero() {
+	public long getNumero() {
 		return numero;
 	}
 
@@ -31,15 +29,15 @@ public class Pessoa {
 		return complemento;
 	}
 
-	public String getTelResidencial() {
+	public long getTelResidencial() {
 		return telResidencial;
 	}
 
-	public String getTelCelular() {
+	public long getTelCelular() {
 		return telCelular;
 	}
 
-	public void setID(int iD) {
+	public void setID(long iD) {
 		ID = iD;
 	}
 
@@ -55,7 +53,7 @@ public class Pessoa {
 		this.logradouro = logradouro;
 	}
 
-	public void setNumero(int numero) {
+	public void setNumero(long numero) {
 		this.numero = numero;
 	}
 
@@ -63,11 +61,11 @@ public class Pessoa {
 		this.complemento = complemento;
 	}
 
-	public void setTelResidencial(String telResidencial) {
+	public void setTelResidencial(long telResidencial) {
 		this.telResidencial = telResidencial;
 	}
 
-	public void setTelCelular(String telCelular) {
+	public void setTelCelular(long telCelular) {
 		this.telCelular = telCelular;
 	}
 	

@@ -35,10 +35,10 @@ public class AVL {
 					atual = balanceamento(atual);
 				}
 			}else{
-				if((Integer)n.getPessoa().atributoEscolhido(indiceAtributo) < (Integer)atual.getPessoa().atributoEscolhido(indiceAtributo)){
+				if((Long)n.getPessoa().atributoEscolhido(indiceAtributo) < (Long)atual.getPessoa().atributoEscolhido(indiceAtributo)){
 					atual.setEsquerda(insereAVL(atual.getEsquerda(),n));
 					atual = balanceamento(atual);
-				}else if((Integer)n.getPessoa().atributoEscolhido(indiceAtributo) > (Integer)atual.getPessoa().atributoEscolhido(indiceAtributo)){
+				}else if((Long)n.getPessoa().atributoEscolhido(indiceAtributo) > (Long)atual.getPessoa().atributoEscolhido(indiceAtributo)){
 					atual.setDireita(insereAVL(atual.getDireita(), n));
 					atual = balanceamento(atual);
 				}
