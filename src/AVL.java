@@ -63,11 +63,12 @@ public class AVL {
 				//perna para a esquerda, o filho a esquerda tem FB 1, entao rotaciona o pai (atual) para a direita
 				atual = rotacaoLadoEsquerdo(atual);
 			}else{
+				//joelho para a esquerda, rotaciona para o lado direito
 				atual = rotacaoDuplaDireita(atual);
 			}
 		}else if(fb == -2){
 			if(calculaFB(atual.getDireita()) == 1){
-				//o filho a direita tem FB 1, entao rotaciona o pai (atual) duplamente para a esquerda
+				//joelho para a direita, o filho a direita tem FB 1, entao rotaciona o pai (atual) duplamente para a esquerda
 				atual = rotacaoDuplaEsquerda(atual);
 			}else{
 				//perna para a direita, rotaciona para o lado esquerdo
